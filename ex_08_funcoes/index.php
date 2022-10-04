@@ -247,5 +247,47 @@ echo '<hr>';
 
 
 
+# FUNCÕES ANÔNIMAS -------------------------------------------------------------------------------------------------------
+# NÃO TEM NOME E PODE SER DEFINIDA COMO UM VALOR A ATRIBUIR A UMA VARIÁVEL
+$a = function()
+{
+    echo "<p>Olá</p>";
+};  // TEM QUE TER UM ';'
+
+
+$a();   //PARA EXECULTAR A FUNCÃO
+
+
+# OUTRO EXEMPLO
+$falar = function($mensagem)  // $mensagem -> PARÂMETRO QUE VAI RECEBER O VALOR DO ARGUMENTO ('Estou aqui!')
+{
+    echo "<p>Eu digo: $mensagem</p>";
+};
+
+$falar ('Estou aqui!'); // ('Estou aqui!') -> ARGUMENTO
+
+
+# OUTRO EXEMPLO
+$andar = function($metros)
+{
+    return "Andei $metros metros";
+};
+
+echo $andar (100);
+
+
+# OUTRO EXMPLO
+$a = function()
+{
+    return "<br><br>Função A";
+};
+
+function fale($x){
+    echo $x . " (>‿◠)";
+}
+
+fale($a());
+
+
 
 ?>
