@@ -316,17 +316,41 @@ $y = 30;
 
 $minhaFuncao = fn($z) => "$x - $y - $z";  // '=>' O QUE VAI DENTRO DO 'fn' 
 
-echo $minhaFuncao(10);
+echo $minhaFuncao(10) . '<hr>';
 
 
 
+# GENERATORS (PERMITE GERAR UMA SERIE DE VALORES) -----------------------------------------------------------------------
+# CADA VALOR É DEVOLVIDO PELA FUNÇÃO ATRAVÉZ DO YIELD 
+# GUARDA O ESTADO DA FUNÇÃO E PERMITE CONTINUAR A PARTIR DO ESTADO ONDE FICOU NA ÚLTIMA CHAMADA
+function buscar_numero()
+{
+    for($i = 0; $i < 10; $i++){
+        yield $i;
+    }
+}
 
 
+# ESSA FUNÇÃO PODE SER USADO EM UM CICLO ATÉ QUE O GERADOR NÃO TENHA MAIS VALORES A DEVOLVER COM O YIELD
+foreach(buscar_numero() as $numero)
+{
+    echo "$numero<br>";
+}
 
+# NÃO TRATA OS DADOS TODOS DE UMA VEZ, PORTANTO, PODEM ALMENTAR A PERFORMACE DO SCRIPT
+# PODEM DEVEVOLVER VALORES DE UM OUTRO GERADOR OU DE UM ARRAY
+function buscar_nomes()
+{
+    yield 'João';
+    yield 'Maria';
+    yield from ['Carlos', 'Ana', 'Antônio'];
+    yield 'Fernando';
+}
 
+echo $limpa. $limpa;
 
-
-
-
+foreach (buscar_nomes() as $nome){
+    echo "$nome<br>";
+}
 
 ?>
