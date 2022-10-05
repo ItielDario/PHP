@@ -287,6 +287,45 @@ function fale($x){
 }
 
 fale($a());
+echo '<hr>';
+
+
+
+# FUNÇÕES CLOSURE (FUNÇÕES ANÔNIMAS QUE USAM VARIAVEIS DO ESCOPO GLOBAL) -------------------------------------------------
+$x = 40;
+$y = 20;
+
+$minhaClosure = function($z) use($x, $y)   // $x E $y VÃO PASSAR A SER CONHECIDO DENTRO DA FUNÇÃO ANÔNIMA (NÃO É VARIAVEL GLOBAL)
+{
+    echo "$z - $x - $y";
+    $y = 1000;      // NÃO VAI ALTERAR O VALOR DE Y
+};
+
+$minhaClosure(10);
+
+echo "<p>$y</p>";    // O VALOR DA $Y NÃO FOI ALTERADO NA CLOSURE
+
+
+
+
+# ARROW FUNCTION (FUNÇÕES ANÔNIMAS ESCRITAS DE UMA FORMA MAIS SUSCINTA) --------------------------------------------------
+# TEM AS MESMAS CARACTERISTICAS DE UMA FUNÇÃO CLOSURE POREM CAPTURAM AUTOMATICAMENTE UMA VARIAVEL GLOBAL
+# USA A PALAVRA 'fn' E NÃO NECISSITAM DO RETURN NEM CHAVES
+$x = 20;
+$y = 30;
+
+$minhaFuncao = fn($z) => "$x - $y - $z";  // '=>' O QUE VAI DENTRO DO 'fn' 
+
+echo $minhaFuncao(10);
+
+
+
+
+
+
+
+
+
 
 
 
