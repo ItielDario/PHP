@@ -119,4 +119,124 @@ class Humano1
 $homem = new Humano1;
 echo $homem->nome_completo() . $linha;  // João Ribeiro
 
+
+# CONSTRUCTOR (É UM MÉTODO ESPECIAL DENTRO DE UMA CLASSE) -----------------------------------------------------------------
+# SEMPRE É EXECULTADO AUTOMÁTICAMENTE QUANDO CRIADO UM OBJETO A PARTIR DE UMA CLASSE.
+# ESSE MÉTODO É DEFINIDO DE UMA FORMA ESPECIAL COM '__' (DOIS UNDERSCORES)
+# SÃO CHAMADOS DE MÉTODOS MÁGICOS POIS TEM UMA EXECULÇÃO ESPECÍFICA OU ATUROMÁTICA ASSOCIADA.
+
+class Humano2
+{
+    private $nome;
+    private $sobrenome;
+
+    function __construct($n, $s)    // ESSE MÉTODO É AUTOMATICAMENTE INICIADO QUANDO HOVER A CRIAÇÃO DE UM OBJETO
+    {
+        $this->nome = $n;
+        $this->sobrenome = $s;
+    }
+
+    public function nomes_completo(){
+        return $this->nome . ' ' . $this->sobrenome;
+    }
+}
+
+$homem = new Humano2('Hugo', 'Joaquim');
+$mulher = new Humano2('Ana', 'Martins');
+
+echo $homem->nomes_completo();
+echo $limpa;
+echo $mulher->nomes_completo();
+
+
+
+# CONSTRUCTOR SEM PARÂMETROS
+# PODEMOS INSTANCIAR OBJETOS DAS SEGUINTES FORMAS:
+
+class HumanoExemplo
+{
+    function __construct()
+    {
+        // CÓDIGO
+    }
+}
+
+$homem = new HumanoExemplo;
+# OU
+$homem = new HumanoExemplo();
+echo $linha;
+
+
+
+# OUTRO EXEMPLO
+class Humano3_1
+{
+    public $nome;
+    public $sobrenome;
+}
+
+class Humano3_2
+{
+    public function falar()
+    {
+        // CÓDIGO
+    }
+
+    private function andar()
+    {
+        // MÉTODO ACESSÍVEL APENAS DENTRO DAS CLASS
+    }
+
+    public function movimento(){
+        $this->andar();  // ESSE MÉTODO ESTA DENTRO DA CLASSE E PODE CHAMAR O 'andar()'
+    }
+}
+
+# PODEMOS TER CLASSES SEM PROPRIEDADES OU MÉTODOS 
+
+# AO INSTANCIAR A CLASSE Humano3_1 PODEMOS ACEDER DIRETAMENTE ÁS SUAS PROPRIEDADES, PELO FATO DE ESTARAM COM
+# O ACCESS MODIFIER 'public'
+
+$homem = new Humano3_1();
+$homem->nome = "João";
+$homem->sobrenome = "Ribeiro";
+
+$mulher = new Humano3_2();
+$mulher->movimento();  // ESSE MÉTODO PODE SER ACESSADO FORA DA CLASSE, POIS O SEU ACCESS MODIFIERS É PUBLIC
+
+
+
+# NO PHP 8 FOI INSERIDO O PROPERTY PROMOTION NO CONSTRUTOR
+# DEFINE PROPRIEDADES DIRETAMENTE NOS PARÂMENTROS DO CONSTRUTOR
+
+# ANTES:
+class Humano5
+{
+    public $nome;
+    public $sobrenome;
+
+    function __construct($n, $s)
+    {
+        $this->nome = $n;
+        $this->sobrenome = $s;
+    }
+}
+
+# PODEMOS CRIAR A MESMA CLASSE DA SEGUINTE FORMA:
+class Humano6
+{
+    function __construct($nome, $sobrenome)
+    {
+        $this->nome = $nome;
+        $this->sobrenome = $sobrenome;
+    }
+}
+
+$homem1 = new Humano5('Marcelo', 'Fernando');
+$homem2 = new Humano6('Victor', 'Silva');
+
+echo $homem1->nome . ' ' . $homem1->sobrenome;
+echo $limpa;
+echo $homem2->nome . ' ' . $homem2->sobrenome;
+
 ?>
