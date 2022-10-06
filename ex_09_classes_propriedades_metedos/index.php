@@ -267,7 +267,129 @@ $b = new class
 
 echo $a->teste();
 echo $limpa;
-echo $b->teste();
+echo $b->teste() . $linha;
+
+
+
+# HERANÇA | INHERITANCE --------------------------------------------------------------------------------------------------
+# MECANISMO QUE UTILIZAMOS PARA CRIAR UMA CLASSE QUE HERDA AS PROPRIEDADES E MÉTODOS DE OUTRA CLASSE
+
+# A CASSE INICAL A PARTIR DA QUAL AUTRAS VÃO SER CRIADAS É DESIGNADA 'CLASSE BASE'
+# AS CLASSES QUE VÃO HERDAR AS PROPRIEDADES E MÉTODOS DA CLASSE BASE É CHAMADA DE 'CLASSE DERIVADA'
+
+# EXEMPLO 01 -> CLASS TRADICIONAL:
+class Animal1
+{
+    public $especia;
+    public $peso;
+
+    function tipoEspecie()
+    {
+        return "Este animal é da especie {$this->especie}";  // {} -> CONCATENAÇÃO
+    }
+}
+
+$animal = new Animal1();
+$animal->especie = 'Mamiferos';
+echo $animal->tipoEspecie() . $limpa;
+
+
+# EXEMPLO 2.1 -> UMA CLASSE BASE
+class Animal
+{
+    public $especie;
+    public $peso;
+
+    function tipoEspecie()
+    {
+        return "Este animal é da espécie {$this->especie}";
+    }
+}
+
+# EXEMPLO 2.2 -> UMA CLASSE COM HERANÇA
+class Mamifero extends Animal      // extends -> EXPERSSÃO PARA HERDAR UMA CLASSE A PARTIR DE OUTRA
+{
+    // NÃO É NECESSÁRIO VOLTAR A DEFINIR AS PROPRIEDADES E MÉTODOS DA CLASSE BASE
+    // AS PROPRIEDADES E MÉTODOS DA CLASSE BASE FORAM IMPORTADAS PARA CÁ 
+
+    // PODEMOS ACRECENTAR OUTRAS PROPRIEDADES E OUTROS MÉTODOS
+    public $quantidade_pernas;
+    public $tem_pelo;
+
+    function temQuantasPernas()
+    {
+        return "O animal da espécie {$this->especie} tem {$this->quantidade_pernas} pernas";
+    }
+}
+
+$homem = new Mamifero();
+$homem->especie = 'Homo Sapiens';
+$homem->quantidade_pernas = '2';
+echo $homem->temQuantasPernas() . $linha;
+
+
+
+# OVERRIDING ------------------------------------------------------------------------------------------------------------
+# PERMITE QUE UMA CLASSE DERIVADA TENHA MÉTODOS REESCRITOS ESPECIFICAMENTE PARA ESSA CLASSE
+
+# POR EXEMPLO PODEMOS TER UM MÉTODOS 'teste' NA CLASSE BASE E
+# TER O MESMO MÉTODO 'teste' COM UM CÓDIGO DIFERENTE NA CLASSE DERIVADA
+class Animais
+{
+    function mover()
+    {
+        echo 'Mover a partir da classe base.';
+    }
+}
+
+class Mamiferos extends Animais
+{
+    // METODO mover()
+}
+
+class Peixes extends Animais
+{
+    function mover()    // ALTERANDO O MÉTODO mover()
+    {
+        echo 'Mover a partir da classe Peixe.';
+    }
+}
+
+$animais = new Animais();
+echo $animais->mover() . $limpa;
+
+$mamiferos = new Mamiferos();
+echo $mamiferos->mover() . $limpa;
+
+$peixes = new Peixes();
+echo $peixes->mover() . $limpa . $limpa;
+
+
+# TAMBÉM É APLICÁVEL ÀS PROPREDADES
+class Animals
+{
+    public $especie = 'Ave';
+}
+
+class Mamifers
+{
+    public $especie = 'Cavalo';
+}
+
+$a = new Animals();
+echo $a->especie . $limpa;
+
+$b = new Mamifers();
+echo $b->especie;
+
+
+
+
+
+
+
+
+
 
 
 ?>
