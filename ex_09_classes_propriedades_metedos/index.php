@@ -120,6 +120,8 @@ $homem = new Humano1;
 echo $homem->nome_completo() . $linha;  // João Ribeiro
 
 
+
+
 # CONSTRUCTOR (É UM MÉTODO ESPECIAL DENTRO DE UMA CLASSE) -----------------------------------------------------------------
 # SEMPRE É EXECULTADO AUTOMÁTICAMENTE QUANDO CRIADO UM OBJETO A PARTIR DE UMA CLASSE.
 # ESSE MÉTODO É DEFINIDO DE UMA FORMA ESPECIAL COM '__' (DOIS UNDERSCORES)
