@@ -239,6 +239,35 @@ $homem2 = new Humano6('Victor', 'Silva');
 
 echo $homem1->nome . ' ' . $homem1->sobrenome;
 echo $limpa;
-echo $homem2->nome . ' ' . $homem2->sobrenome;
+echo $homem2->nome . ' ' . $homem2->sobrenome . $linha;
+
+
+
+# CLASSE ANÔNIMAS (QUANDO QUEREMOS INSTANCIAR APENAS UM OBJETO DESSA CLASSE) ----------------------------------------------
+# EXEMPLO CLASSE NORMAL:
+class Objeto1
+{
+    function teste()
+    {
+        echo 'Teste - Normal';
+    }
+}
+
+$a = new Objeto1();
+
+
+# EXEMPLO COM CLASSE ANÔNIMA:
+$b = new class
+{
+    function teste()
+    {
+        echo 'Teste - Classe anônima';
+    }
+};      //PRECISA DE ';'
+
+echo $a->teste();
+echo $limpa;
+echo $b->teste();
+
 
 ?>
