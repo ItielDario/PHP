@@ -485,10 +485,37 @@ echo $a->teste();
 
 
 
+# ACCESS LEVELS (NÍVEIS DE ACESSO) ----------------------------------------------------------------------------------------
+# EXISTEM 3 TIPOS DE ACCESS LEVELS (PUBLIC, PROTECTED, PRIVATE)
+
+class MinhaClasse
+{
+    public $variavel1;
+    protected $variavel2;
+    private $variavel3;
+}
+
+$a = new MinhaClasse();
+
+$a->variavel1 = '111';    // POSSIVEL
+$a->variavel2 = '222';    // NÃO É POSSIVEL. RESULTA EM ERRO
+$a->variavel3 = '333';    // NÃO É POSSIVEL. RESULTA EM ERRO
 
 
+# PUBLIC
+# OS MEMBROS PUBLICOS (PROPRIEDADES OU MÉTODOS) DE UMA CLASSE, ESTÃO SEMPRE ACESSIVEIS.
+class TudoPublico
+{
+    public $propriedade;
+    public function metodo()
+    {
+        echo 'Método publico';
+    }
+}
 
-
+$a = new TudoPublico();
+$a->propriedade = 'a';
+$a->metodo();
 
 
 
