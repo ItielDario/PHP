@@ -443,7 +443,50 @@ echo $linha;
 
 
 
-# 
+# FINAL (IMPEDE QUE UMA CLASSE DERIVADA POSSA FAZER OVERRIDE DE MÉTODOS) -------------------------------------------------
+class Veiculo
+{
+    final function mover() // FINAL -> NÃO PERMITE A CRIAÇÃO DE CÓDIGOS ALTERNATIVOS A ESSA FUNÇÃO
+    {
+        // CÓDIGO
+    }
+}
+
+class Bicicleta extends Veiculo
+{
+    /*
+    function mover()  // ERRO
+     {
+         // OVERRIDE DO GÓDIGO ORIGINAL
+    }
+    */
+}
+
+
+# PODEMOS DEFINIR UMA CLASS COMO NÃO SENDO PASSÍVEL DE SER HERDADA
+final class Humano7
+{
+    // CÓDIGO
+    function teste()
+    {
+        echo 'Teste';
+    }
+}
+
+/*
+class Homem extends Humano7     // ERRO
+{
+    // CÓDIGO
+}
+
+$a = new Homem();
+echo $a->teste();
+*/
+
+
+
+
+
 
 
 
