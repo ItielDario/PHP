@@ -371,7 +371,7 @@ class Animals
     public $especie = 'Ave';
 }
 
-class Mamifers
+class Mamifers extends Animals
 {
     public $especie = 'Cavalo';
 }
@@ -380,7 +380,71 @@ $a = new Animals();
 echo $a->especie . $limpa;
 
 $b = new Mamifers();
-echo $b->especie;
+echo $b->especie . $linha;
+
+
+
+# OVERRIDE (PARENT CLASS) ------------------------------------------------------------------------------------------------
+# É A CLASSE A PARTIR DA QUAL FAZEMOS A DERIVAÇÃO
+class Retangulo
+{
+    public $largura, $altura;
+
+    function __construct($l, $a)
+    {
+        $this->largura = $l;
+        $this->altura =$a; 
+    }
+
+    function calculaArea()
+    {
+        return $this->largura * $this->altura;
+    }
+}
+
+class Quadrado extends Retangulo
+{
+    function __construct($l)
+    {   
+        $this->largura = $l;
+        $this->altura = $l;
+    }
+}
+
+$retang = new Retangulo(10, 20);
+$quad = new Quadrado(10);
+
+echo $retang->calculaArea() . $limpa;
+echo $quad->calculaArea() . $limpa;
+
+
+# PODEMOS CHAMAR O CONSTRUCT DA CLASSE BASE USANDO A EXPRESSÃO 'parent'
+class Quadrado_1 extends Retangulo
+{
+    function __construct($l)
+    {
+        parent::__construct($l, $l);  // VÁ AO CONSTRUCT DA CLASSE PAI PASSA ESSES DOIS ARGUMENTOS QUE ELA PEDE
+    }
+}
+
+$quad_1 = new Quadrado_1(5);
+echo $quad_1->calculaArea();
+
+# OU
+
+class Quadrado_2 extends Retangulo
+{
+    function __construct($l)
+    {
+        Retangulo::__construct($l, $l);
+    }
+}
+echo $linha;
+
+
+
+# 
+
 
 
 
