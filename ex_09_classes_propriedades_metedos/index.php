@@ -702,7 +702,9 @@ class Tempo
 
 
 
-
+# STATIC ------------------------------------------------------------------------------------------------------------------
+# PODE SER USADA PARA DECLARAR PROPRIEDADES OU METODOS DE UMA CLASSE QUE PODEM SER ACENDIDOS
+# SEM QUE SEJAM NECESSARIO CRIAR UM OBJETO A PARTIR DESTA CLASSE.
 
 
 
