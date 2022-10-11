@@ -611,13 +611,94 @@ $b = new Homens();
 $a->setPrivate($b, 'Joao');
 
 $a->apresentar();
-echo '<br>';   
+echo $limpa;   
 $b->apresentar();
+echo $limpa;
+
+
+# UMA BOA PRÁTICA É CRIAR O MENOR NÚMERO DE PROPRIEDADES DE UMA CLASSE COMO PUBLICAS
+# POIS, ISSO É EXPOR DEMAIS ESSE PROPRIEDADE.
+# EXEMPLO: A PROPRIEDADE DE UMA CLASSE TEM QUE SER SEMPRE O MESMO NÚMERO.
+class Homem_2
+{
+    public $idade;
+}
+
+$eu = new Humano();
+$eu->idade = 'Olá mundo';     // ISTO É POSSIVEL POIS O PHP NÃO É STRONGLY TYPED
 
 
 
+# GETTERS E SETTERS ------------------------------------------------------------------------------------------------------
+# PARA DEFINIR COARRETAMENTE ESTE TIPO DE SITUAÇÕES, PODEMOS USAR MÉTODOS PARA DEFINIR E 
+# IR BUSCAR OS VALORES DAS PROPRIEDADES PRIVADAS. 
+# ESTES MÉTODOS PERMITEM GARANTIR QUE A INTEGRIDADE DAS PROPRIEDADES SEJAM MANTIDAS
+class Homem_3
+{
+    private $idade;
+}
+
+// $eu->idade = 'João';       // NÃO É POSSIVEL PORQUE A PROPRIEDADE É PRIVADA
+echo $limpa . $limpa;
 
 
+# MELHORANDO
+class Homem_4
+{
+    private $idade = 0;
+
+    public function setIdade($valor)    // DEFINE O VALOR
+    {
+        # VERIFICA SE O $VALOR É NUMÉRICO
+        if(is_numeric($valor)){
+            $this->idade = $valor;
+        }
+    }
+
+    public function getIdade()      // BUSCA O VALOR
+    {
+        return $this->idade;
+    }
+}
+
+$eu = new Homem_4();
+$eu->setIdade('João');
+echo $eu->getIdade();
+
+
+# OUTRO EXEMPLO
+class Tempo
+{
+    private $segundos;
+
+    // ----------------------------------------------------
+    function setSegundo($valor)
+    {
+        if(!is_numeric($valor) || $valor < 0){
+            $this->segundos = 0;
+        }
+        else{
+            $this->segundos = $valor;
+        }
+    }
+
+    // ----------------------------------------------------
+    function getMinutos()
+    {
+        return $this->segundos / 60;       // DEFININDO MINUTOS
+    }
+
+    // ----------------------------------------------------
+    function setMinutos($valor)
+    {
+        if($valor == 0){
+            $this->segundos = 0;
+        }
+        else{
+            $this->segundos = $valor * 60;  // DEFININDO SEGUNDOS
+        }
+    }
+}
 
 
 
