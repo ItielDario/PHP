@@ -570,8 +570,49 @@ class Testes
 $a = new Testes();
 $a->mover();
 //$a->valor = '2000';  // ERRO
-echo $linha;
+echo $limpa . $limpa;
 
+
+# VAR KEYWORD (TEM O MESMO COMPORTAMENTO QUE O PUBLIC) 
+# EXISTE APENS POR RETROCOMPATIBILIDADE DEVIDO AOS CÓDIGOS ESCRITOS NO HTML 5.
+# NÃO É RECOMENDADO POIS PODE PASSAR A SER NÃO SUPORTADO OU OBSOLETO.
+class Homem
+{
+    var $nome, $sorenome;
+}
+
+$eu = new Homem();
+$eu->nome = 'João';
+$eu->sobrenome = 'Ribeiro';
+
+echo $eu->nome . '  ' .  $eu->sobrenome . $limpa . $limpa;
+
+
+# OBJECT ACCESS
+# UM OBJETO INSTACIADO A PARTIR DE UMA CLASSE PODE  ACEDER A ELEMENTOS PRIVADOS E PROTEGIDOS DE OUTRO OBJETO
+# CRIADO A PARTR DA MESMA CLASSE.
+class Homens
+{
+    private $nome = 'x';
+
+    function setPrivate($objeto, $valor)
+    {
+        $objeto->nome = $valor;       // $b->nome = Joao 
+    }
+
+    function apresentar()
+    {
+        echo $this->nome;
+    }
+}
+
+$a = new Homens();
+$b = new Homens();
+$a->setPrivate($b, 'Joao');
+
+$a->apresentar();
+echo '<br>';   
+$b->apresentar();
 
 
 
