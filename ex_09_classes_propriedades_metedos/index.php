@@ -498,8 +498,8 @@ class MinhaClasse
 $a = new MinhaClasse();
 
 $a->variavel1 = '111';    // POSSIVEL
-$a->variavel2 = '222';    // NÃO É POSSIVEL. RESULTA EM ERRO
-$a->variavel3 = '333';    // NÃO É POSSIVEL. RESULTA EM ERRO
+//$a->variavel2 = '222';    // NÃO É POSSIVEL. RESULTA EM ERRO
+//$a->variavel3 = '333';    // NÃO É POSSIVEL. RESULTA EM ERRO
 
 
 # PUBLIC
@@ -516,6 +516,71 @@ class TudoPublico
 $a = new TudoPublico();
 $a->propriedade = 'a';
 $a->metodo();
+echo $limpa . $limpa;
+
+
+# PROTECTED
+# PODE SER ALCANÇADO DENTRO DA CLASSE E DENTRO ALGUMA CLASSE QUE SEJA EXTENÇÃO DE OUTRA (CLASSE DERIVADA)
+class ClasseTeste           // CLASSE BASE
+{
+    public $publica = "a";
+    protected $protegida = "b";
+    private $privada = "c";
+}
+
+class ClasseDerivada extends ClasseTeste      // CLASSE DERIVADA
+{
+    function teste()
+    {
+        echo $this->publica ."<br>" ;   // POSIVEL
+        echo $this->protegida;          // POSIVEL
+        //echo $this->privada;          // ERRO
+    }
+}
+$a = new ClasseTeste();
+$a->publica = '1';           // POSSIVEL     
+// $a->protegida = '2';      // ERRO
+// $a->privada = '3';        // ERRO
+
+$b = new ClasseDerivada();
+$b->publica = '4';           // POSSIVEL
+// $b->protegida = '5';      // ERRO
+// $b->privada = '6';        // ERRO
+
+$b->teste();
+echo $limpa . $limpa;
+
+
+# PRIVATE (SÓ PODE SER VISIVEL DENTRO DA SUA PROPRIA CLASSE )
+# NÃO É VISIVEL NOS OBJETOS INSTANCIADOS NEM NOUTRAS CLASSES DERIVADAS
+
+# -----------
+# AO CONTRÁRIO DAS PROPRIEDADES, OS MÉTODOS NÃO NECESSITAM DE TER UM ACCESS LEVEL ESPECIFICADO.
+# SE NÃO FOR IDENTIFICADO O MÉTODO É CONSIDERADO PUBLICO
+class Testes
+{
+    private $valor = '1000';    // SÓ É POSSIVEL ACESSAR DENTRO DESTA CLASSE
+
+    function mover()    // METODO PUBLICO
+    {
+        echo $this->valor;      
+    }
+}
+
+$a = new Testes();
+$a->mover();
+//$a->valor = '2000';  // ERRO
+echo $linha;
+
+
+
+
+
+
+
+
+
+
 
 
 
