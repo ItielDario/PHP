@@ -639,7 +639,7 @@ class Homem_3
 }
 
 // $eu->idade = 'João';       // NÃO É POSSIVEL PORQUE A PROPRIEDADE É PRIVADA
-echo $limpa . $limpa;
+echo $limpa;
 
 
 # MELHORANDO
@@ -699,6 +699,7 @@ class Tempo
         }
     }
 }
+echo $linha;
 
 
 
@@ -706,13 +707,20 @@ class Tempo
 # PODE SER USADA PARA DECLARAR PROPRIEDADES OU METODOS DE UMA CLASSE QUE PODEM SER ACENDIDOS
 # SEM QUE SEJAM NECESSARIO CRIAR UM OBJETO A PARTIR DESTA CLASSE.
 
+class Testando
+{
+    // INSTANCE MEMBERS - CADA OBJETO CRIADO A PARTIR DA CLASSE POSSUI SUAS PROPRIEDADES E MÉTODOS
+    public $nome;
+    function teste()
+    {
+        // CODIGO
+    }
 
-
-
-
-
-
-
-
-
+    // STATIC OU CLASS MEMBERS - APENAS EXISTENTES UMA VEZ NA CLASSE
+    static $idade;
+    static function mover()
+    {
+        // CODIGO
+    } 
+}
 ?>
