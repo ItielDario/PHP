@@ -748,8 +748,37 @@ Operacoes::$valor2 = 20;        // ATRIBUINDO UM NUMERO A VARIAVEL $valor2
 echo Operacoes::adicionar() . $limpa;    // CHAMANDO O METODO adicionar()
 
 $hash = Operacoes::hashAleatoria();
-echo $hash;
+echo $hash . $limpa . $limpa;
 
 
+# EXEMPLO PRATICO DE STATIC:
+class Operacao
+{
+    // RETORNA UM NUMERO SORTEADO ENTRE $min E $max
+    static function numeroAleatorio($min, $max)
+    {
+        return rand($min, $max);
+    }
 
+    static function calcularFormula($a, $b)
+    {
+        // (A * 2) + (B * A)
+        return($a * 2) + ($b * $a);
+    }
+
+    static function criarUmNome()
+    {
+        $nomes = ['João', 'Ana', 'Carlos', 'Francisco', 'Rui', 'Itiel'];
+        $sobrenome = ['Silva', 'Almeida', 'Santos', 'Rodrigues', 'Oliveira'];
+        return $nomes[rand(0, count($nomes) - 1)] . ' ' . $sobrenome[rand(0, count($sobrenome) - 1)];
+    }
+}
+
+echo Operacao::numeroAleatorio(0, 1000) . $limpa;
+
+echo Operacao::calcularFormula(10, 20) . $limpa;
+
+for ($i = 0; $i < 10; $i++){
+    echo Operacao::criarUmNome() . ' | ';
+}
 ?>
