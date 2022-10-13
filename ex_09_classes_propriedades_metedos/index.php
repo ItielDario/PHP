@@ -723,4 +723,33 @@ class Testando
         // CODIGO
     } 
 }
+
+
+# EXEMPLO:
+class Operacoes
+{
+    static $valor1;
+    static $valor2;
+
+    static function adicionar()
+    {
+        return self::$valor1 + self::$valor2;     // SELF -> EU PROPRIO
+        // OU return Operacoes::$valor1 + Operacoes::$valor2;
+    }
+
+    static function hashAleatoria()
+    {
+        return rand(0,1000);      // RAND() -> SORTEIO
+    }
+}
+
+Operacoes::$valor1 = 10;        // ATRIBUINDO UM NUMERO A VARIAVEL $valor1
+Operacoes::$valor2 = 20;        // ATRIBUINDO UM NUMERO A VARIAVEL $valor2
+echo Operacoes::adicionar() . $limpa;    // CHAMANDO O METODO adicionar()
+
+$hash = Operacoes::hashAleatoria();
+echo $hash;
+
+
+
 ?>
