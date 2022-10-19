@@ -46,5 +46,28 @@ define('PI', '3.14');
 
 echo APP_NAME . $linha;
 
- 
+
+
+# CONSTANTS --------------------------------------------------------------------------------------------------------------
+
+# PARA VERIFICAR DE UMA CONSTANTE JÁ EXISTE
+if(!defined('APP_NAME_4')){   // SE NÃO ESTÁ DEFINIDA UMA CONSTANTE CHAMADA 'APP_NAME_4'
+    define('APP_NAME_4', 'Minha App');    // ENTÃO DEFINA O 'APP_NAME_4'
+}
+echo APP_NAME_4 . $limpa;
+
+
+# OU 
+defined('CONSTANTE') or define('CONSTANTE', 'Valor');  // PERGUNTA SE A CONSTANTE FOI DEFINIDA, CASO CONTRARIO É DEFINIDA
+
+
+# DEFININDO UMA CONSTANTE COM ARRAY
+const NOMES = ['João', 'Ana', 'Maria'];
+echo NOMES[0] . $limpa;
+
+
+# DEFININDO ARRAY COM DEFINE
+define('NAMES', ['João', 'Ana', 'Maria']);
+echo NAMES[2] . $linha;
+
 ?>
