@@ -1,4 +1,7 @@
 <?php
-echo 'I would to be a nurse';
+const LIMPA = '<br>';
+const LINHA = '<hr>';
+
+# IMPORTAR SCRIPTS COM INCLUDE
 
 ?>
