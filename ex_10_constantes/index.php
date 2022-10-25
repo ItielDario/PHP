@@ -73,5 +73,37 @@ echo NAMES[2] . $linha;
 
 
 # CONSTANTES MÁGICAS ------------------------------------------------------------------------------------------------------
+# SÃO 8 E SÃO DESIGNADAS ASSIM PORUQE O SEU VALOR VARIA AUTOMÁTICAMENTE DEPENDENDO ONDE ESTÃO A SER USADAS
 
+echo __LINE__ . $limpa;  // INDICA O NÚMERO DA LINHA DESTE CÓDIGO NO SCRIPT
+
+echo __FILE__ . $limpa;  // INDICA O CAMINHO COMPLETO DO SCRIPT
+
+echo __DIR__ . $limpa . $limpa;   // INDENTIFICA A PASTA ONDE O SCRIPT ESTÁ ALOJADO
+
+
+testes();
+function testes()
+{
+    $a = true;
+    echo __FUNCTION__ . '<br>' . '<br>';   // INDICA O NOME DA FUNÇÃO
+}
+
+
+class MinhaClasse
+{
+    function identificar()
+    {
+        echo __CLASS__ . '<br>';    // INDICA O NOME DA MINHA CLASSE
+        echo __METHOD__ . '<br>';   // INDICA O NOME DO MÉTODO
+    }
+}
+
+
+$teste = new MinhaClasse();
+$teste->identificar();
+
+
+# __TRAIT__ É UM MECANISMO DE REUTILIZAÇÃO DE CÓDIGO
+echo __NAMESPACE__;   // INDICA O NOME DO NAMESPACE ATUAL
 ?>
