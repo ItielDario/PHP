@@ -781,4 +781,69 @@ echo Operacao::calcularFormula(10, 20) . $limpa;
 for ($i = 0; $i < 10; $i++){
     echo Operacao::criarUmNome() . ' | ';
 }
+echo $linha;
+
+
+
+# CLASSES ABSTRATA -------------------------------------------------------------------------------------------------------
+# É CONSTITUIDA POR UMA IMPLEMENTAÇÃO PARCIAL A PARTIR DAS QUAIS OUTRAS CLASSES PODEM CRESCER
+# POSSUI MÉTODOS IMCOMPLETOS QUE, OBRIGATÓRIAMENTE TEM QUE SER IMPLEMENTADOS NAS CLASSES DERIVADAS
+
+# NÃO PODEM SER INSTANCIADAS. SERVEM APENAS PARA PODEREM SER HERDADAS POR OUTRAS CLASSES
+
+abstract class Forma
+{
+    public $largura = 100;
+    public $altura = 200;
+
+    abstract public function area();
+    
+    function altura()
+    {
+        return $this->altura;
+    }
+}
+
+# $quadrado = new Forma();  // ISSO NÃO É PERMITIDO
+
+class Retangulos extends Forma
+{
+    public function area()
+    {
+        return $this->largura * $this->altura;
+    }
+}
+
+$r = new Retangulos();
+echo $r->area() . $limpa;
+echo 'Altura = ' . $r->altura() . $linha;
+
+
+
+# TRAITS (GRUPO DE MÉTODOS QUE PODEM SER INSERIDOS DENTRO DE UMA CLASSE) -------------------------------------------------
+
+trait MinhasHabilidades   // AS REGRA PARA DA NOMES O TRAITS É A MESMA PARA DAR NOMES A CLASSES
+{
+    public function falar($mensagem)
+    {
+        echo "Eu digo: $mensagem";
+    }
+
+    public function saltar($metros)
+    {
+        echo "Eu salto $metros metros.";
+    }
+}
+
+# A CLASSE QUE NECESSITAREM USAR ESTES MÉTODOS DO TRAIT, APENAS TARÃO QUE TER O SEGUINTE:
+
+class SeresHumano
+{
+    use MinhasHabilidades;   // CHAMA O TRAIT 
+}
+
+$h = new SeresHumano();
+echo $h->falar('I enjoy play basketbal') . $limpa;
+echo $h->saltar(3);
+
 ?>
